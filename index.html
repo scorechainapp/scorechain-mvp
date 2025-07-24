@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>ScoreChain Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #0e1014;
+      color: white;
+      text-align: center;
+    }
+    .container {
+      padding: 40px 20px;
+    }
+    h1 {
+      color: #00CFC1;
+    }
+    .wallet-box {
+      margin-top: 20px;
+      padding: 20px;
+      background: #1a1c20;
+      border-radius: 10px;
+      display: inline-block;
+    }
+    .score-bar {
+      margin: 20px auto;
+      width: 80%;
+      height: 25px;
+      border-radius: 20px;
+      background: #333;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    .score-fill {
+      height: 100%;
+      transition: width 0.5s ease-in-out;
+    }
+    .lang-toggle {
+      margin: 20px;
+    }
+    button {
+      background: #00CFC1;
+      color: #000;
+      padding: 10px 20px;
+      border: none;
+      margin: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="title">ScoreChain</h1>
+    <div class="lang-toggle">
+      <button onclick="setLang('es')">Español</button>
+      <button onclick="setLang('en')">English</button>
+    </div>
+    <div class="wallet-box">
+      <p><strong>Wallet conectada:</strong></p>
+      <p id="wallet-address">0x1234...abcd</p>
+    </div>
+    <h2 id="scoreTitle">Tu Score Financiero</h2>
+
+    <div>
+      <p>BTC: <span id="score-btc">86%</span></p>
+      <div class="score-bar"><div class="score-fill" style="width: 86%; background-color: #00ff88;"></div></div>
+
+      <p>ETH: <span id="score-eth">72%</span></p>
+      <div class="score-bar"><div class="score-fill" style="width: 72%; background-color: #ccff00;"></div></div>
+
+      <p>SOL: <span id="score-sol">43%</span></p>
+      <div class="score-bar"><div class="score-fill" style="width: 43%; background-color: #ff3333;"></div></div>
+
+      <p>LINK: <span id="score-link">95%</span></p>
+      <div class="score-bar"><div class="score-fill" style="width: 95%; background-color: #00ff88;"></div></div>
+
+      <p>USDC: <span id="score-usdc">65%</span></p>
+      <div class="score-bar"><div class="score-fill" style="width: 65%; background-color: #ccff00;"></div></div>
+    </div>
+  </div>
+
+  <script>
+    const langText = {
+      es: {
+        title: "ScoreChain",
+        scoreTitle: "Tu Score Financiero"
+      },
+      en: {
+        title: "ScoreChain",
+        scoreTitle: "Your Financial Score"
+      }
+    };
+
+    function setLang(lang) {
+      document.getElementById('title').innerText = langText[lang].title;
+      document.getElementById('scoreTitle').innerText = langText[lang].scoreTitle;
+    }
+  </script>
+</body>
+</html>
