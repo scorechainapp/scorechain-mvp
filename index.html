@@ -3,104 +3,129 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>ScoreChain Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ScoreChain</title>
   <style>
     body {
       margin: 0;
-      font-family: sans-serif;
-      background-color: #0e1014;
-      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0b1120;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .card {
+      background-color: #111827;
+      padding: 40px;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      width: 32px;
+      margin-right: 10px;
+    }
+    .score-title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .score-number {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .bar-container {
+      height: 12px;
+      border-radius: 6px;
+      background: linear-gradient(to right, #00cfc1 0%, #ffce3d 50%, #ff4d4d 100%);
+      margin-bottom: 10px;
+    }
+    .portfolio {
+      margin-top: 30px;
+    }
+    .portfolio-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #2a2a3d;
+      padding: 10px 0;
+    }
+    .portfolio-item:last-child {
+      border: none;
+    }
+    .asset-info {
+      display: flex;
+      align-items: center;
+    }
+    .asset-info img {
+      width: 24px;
+      margin-right: 10px;
+    }
+    .risk-low { color: #00ff88; }
+    .risk-mid { color: #ffce3d; }
+    .footer {
+      margin-top: 30px;
+      font-size: 12px;
+      color: #ccc;
       text-align: center;
     }
-    .container {
-      padding: 40px 20px;
-    }
-    h1 {
-      color: #00CFC1;
-    }
-    .wallet-box {
-      margin-top: 20px;
-      padding: 20px;
-      background: #1a1c20;
-      border-radius: 10px;
-      display: inline-block;
-    }
-    .score-bar {
-      margin: 20px auto;
-      width: 80%;
-      height: 25px;
-      border-radius: 20px;
-      background: #333;
-      overflow: hidden;
-      margin-bottom: 30px;
-    }
-    .score-fill {
-      height: 100%;
-      transition: width 0.5s ease-in-out;
-    }
-    .lang-toggle {
-      margin: 20px;
-    }
-    button {
-      background: #00CFC1;
-      color: #000;
-      padding: 10px 20px;
-      border: none;
-      margin: 5px;
-      cursor: pointer;
-      font-weight: bold;
-      border-radius: 5px;
+    .footer a {
+      color: #ccc;
+      text-decoration: underline;
+      margin: 0 5px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1 id="title">ScoreChain</h1>
-    <div class="lang-toggle">
-      <button onclick="setLang('es')">Español</button>
-      <button onclick="setLang('en')">English</button>
+  <div class="card">
+    <div class="logo">
+      <img src="https://cryptologos.cc/logos/scorechain-logo.png" alt="ScoreChain" onerror="this.style.display='none'">
+      <span class="score-title">Score Financiero</span>
     </div>
-    <div class="wallet-box">
-      <p><strong>Wallet conectada:</strong></p>
-      <p id="wallet-address">0x1234...abcd</p>
+
+    <div class="score-number">76 / 100</div>
+    <div class="bar-container"></div>
+    <p>Portafolio razonablemente equilibrado</p>
+
+    <div class="portfolio">
+      <div class="portfolio-item">
+        <div class="asset-info"><img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="BTC">Bitcoin</div>
+        <div>40% <span class="risk-low">Riesgo: Bajo</span></div>
+      </div>
+      <div class="portfolio-item">
+        <div class="asset-info"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH">Ethereum</div>
+        <div>25% <span class="risk-low">Riesgo: Bajo</span></div>
+      </div>
+      <div class="portfolio-item">
+        <div class="asset-info"><img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="SOL">Solana</div>
+        <div>15% <span class="risk-mid">Riesgo: Moderado</span></div>
+      </div>
+      <div class="portfolio-item">
+        <div class="asset-info"><img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png" alt="USDC">USD Coin</div>
+        <div>10% <span class="risk-low">Riesgo: Bajo</span></div>
+      </div>
+      <div class="portfolio-item">
+        <div class="asset-info"><img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB">BNB</div>
+        <div>10% <span class="risk-low">Riesgo: Bajo</span></div>
+      </div>
     </div>
-    <h2 id="scoreTitle">Tu Score Financiero</h2>
 
-    <div>
-      <p>BTC: <span id="score-btc">86%</span></p>
-      <div class="score-bar"><div class="score-fill" style="width: 86%; background-color: #00ff88;"></div></div>
-
-      <p>ETH: <span id="score-eth">72%</span></p>
-      <div class="score-bar"><div class="score-fill" style="width: 72%; background-color: #ccff00;"></div></div>
-
-      <p>SOL: <span id="score-sol">43%</span></p>
-      <div class="score-bar"><div class="score-fill" style="width: 43%; background-color: #ff3333;"></div></div>
-
-      <p>LINK: <span id="score-link">95%</span></p>
-      <div class="score-bar"><div class="score-fill" style="width: 95%; background-color: #00ff88;"></div></div>
-
-      <p>USDC: <span id="score-usdc">65%</span></p>
-      <div class="score-bar"><div class="score-fill" style="width: 65%; background-color: #ccff00;"></div></div>
+    <div class="footer">
+      Para mejorar tu score, considera diversificar más tu portafolio y reducir tu exposición a activos de mayor riesgo.<br>
+      © <span id="year"></span> ScoreChain · <a href="#">Política de Privacidad</a> · <a href="#">Términos</a>
     </div>
   </div>
 
   <script>
-    const langText = {
-      es: {
-        title: "ScoreChain",
-        scoreTitle: "Tu Score Financiero"
-      },
-      en: {
-        title: "ScoreChain",
-        scoreTitle: "Your Financial Score"
-      }
-    };
-
-    function setLang(lang) {
-      document.getElementById('title').innerText = langText[lang].title;
-      document.getElementById('scoreTitle').innerText = langText[lang].scoreTitle;
-    }
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
